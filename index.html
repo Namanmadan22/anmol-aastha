@@ -75,7 +75,7 @@ h2 em{font-style:italic}
 .ev{background:var(--card);border-radius:44px;overflow:hidden;margin-bottom:22px;box-shadow:0 14px 40px rgba(150,104,122,.1)}
 .evh{height:min(470px,calc((100vw - 48px)*1.35));position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
 .evh::before{content:"";position:absolute;inset:-30px;background:var(--img) center/cover no-repeat;filter:blur(26px) saturate(1.1);transform:scale(1.1)}
-.evh::after{content:"";position:absolute;top:0;bottom:0;left:50%;aspect-ratio:768/1376;transform:translateX(-50%);background:var(--img) center/100% 100% no-repeat;-webkit-mask-image:linear-gradient(to right,transparent 0,#000 14%,#000 86%,transparent 100%);mask-image:linear-gradient(to right,transparent 0,#000 14%,#000 86%,transparent 100%)}
+.evh::after{content:"";position:absolute;top:0;bottom:0;left:50%;aspect-ratio:var(--ar,768/1376);transform:translateX(-50%);background:var(--img) center/100% 100% no-repeat;-webkit-mask-image:linear-gradient(to right,transparent 0,#000 14%,#000 86%,transparent 100%);mask-image:linear-gradient(to right,transparent 0,#000 14%,#000 86%,transparent 100%)}
 .evh svg{position:absolute;inset:0;width:100%;height:100%}
 .evh i{z-index:1;position:absolute;top:24px;left:24px;background:rgba(255,255,255,.75);color:var(--ink);font:400 .95rem 'DM Sans',sans-serif;border-radius:999px;padding:6px 18px;font-style:normal}
 .evb{padding:32px 32px 36px}
@@ -89,12 +89,6 @@ h2 em{font-style:italic}
 .sc small{color:var(--soft);letter-spacing:.14em;font-size:.7rem}
 #cv{position:absolute;inset:0;width:100%;height:100%;touch-action:none;transition:opacity .6s}
 .tc{font-size:3.4rem}
-.faq details{background:var(--card);border-radius:28px;margin-bottom:14px;box-shadow:0 14px 40px rgba(150,104,122,.1);overflow:hidden}
-.faq summary{list-style:none;cursor:pointer;padding:24px 28px;font:400 1.35rem/1.3 'Playfair Display',Georgia,serif;display:flex;justify-content:space-between;align-items:center;gap:16px}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"+";color:var(--rose);font-size:1.8rem;line-height:1;transition:transform .3s}
-.faq details[open] summary::after{transform:rotate(45deg)}
-.faq details p{margin:0;padding:0 28px 26px;color:var(--soft);font-size:1.05rem}
 .js .rv{opacity:0;transform:translateY(22px);transition:opacity .8s,transform .8s}
 .js .rv.in{opacity:1;transform:none}
 #mus{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:40;width:48px;height:48px;border-radius:50%;border:0;background:var(--mauve);color:#fff;font-size:1.2rem;cursor:pointer;box-shadow:0 8px 22px rgba(150,104,122,.45);display:none}
@@ -107,6 +101,8 @@ h2 em{font-style:italic}
 #sheet h3{font-size:1.9rem;margin:10px 0 8px}
 #sheet p{margin:0 0 22px;color:var(--ink);font-size:1.05rem;-webkit-user-select:text;user-select:text}
 #sheet small{display:block;margin-top:16px;color:var(--soft);font-size:.8rem;line-height:1.5}
+.evh.full::after{-webkit-mask-image:none;mask-image:none}
+@media (min-width:520px){.evh.full::after{-webkit-mask-image:linear-gradient(to right,transparent 0,#000 14%,#000 86%,transparent 100%);mask-image:linear-gradient(to right,transparent 0,#000 14%,#000 86%,transparent 100%)}}
 footer{padding:50px 24px 70px;text-align:center;color:var(--soft);position:relative;z-index:1}
 footer h2{font-size:2.4rem}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
@@ -138,7 +134,7 @@ footer h2{font-size:2.4rem}
   <div class="eye rv">The beginning of always</div>
   <h2 class="rv">A joyful invitation <em>from our families.</em></h2>
   <div class="card rv"><div class="ic">✦</div><h3>The groom</h3><p>Anmol Madan</p><div class="cap s">S/o Mr. Rajesh Madan &amp; Mrs. Renuka Madan</div><div class="cap">With love &amp; blessings</div></div>
-  <div class="card rv"><div class="ic">❀</div><h3>The bride</h3><p>Aastha Arora</p><div class="cap s">D/o Mr. Rohit Arora &amp; Mrs. Archna Arora</div><div class="cap">With love &amp; blessings</div></div>
+  <div class="card rv"><div class="ic">❀</div><h3>The bride</h3><p>Aastha Arora</p><div class="cap s">D/o Mr. Rohit Arora &amp; Mrs. Archana Arora</div><div class="cap">With love &amp; blessings</div></div>
   <div class="card g rv"><div class="ic">♡</div><h3>Anmol weds Aastha</h3><p>Anmol &amp; Aastha request the pleasure of your company as they begin a beautiful new chapter together.</p><div class="cap">11 December 2026</div></div>
 </div></section>
 
@@ -156,6 +152,7 @@ footer h2{font-size:2.4rem}
   <h2 class="rv" style="text-align:center">Our wedding <em>diary</em></h2>
   <div class="ev rv"><div class="evh" style="background:#846457;--img:url(assets/sagan.jpg)" role="img" aria-label="Illustration of a couple exchanging rings"></div><div class="evb"><h3>Sagan</h3><p>Ring Ceremony</p><div class="wh">9 Dec · 7:00 PM<br>Grandeur by Lavanya, Moti Nagar</div><a href="https://www.google.com/maps/search/?api=1&query=Grandeur+by+Lavanya+Moti+Nagar+Delhi" target="_blank" rel="noopener">Get directions ↗</a></div></div>
   <div class="ev rv"><div class="evh" style="background:#4a3239;--img:url(assets/cocktail.jpg)" role="img" aria-label="Illustration of a couple in black outfits raising a toast"></div><div class="evb"><h3>Cocktail</h3><p>Love, laughter &amp; sparkle</p><div class="wh">10 Dec · 7:00 PM<br>Velora, Moti Nagar</div><a href="https://www.google.com/maps/search/?api=1&query=Velora+Moti+Nagar+Delhi" target="_blank" rel="noopener">Get directions ↗</a></div></div>
+  <div class="ev rv"><div class="evh full" style="background:#f2c14e;--ar:720/964;--img:url(assets/haldi.jpg)" role="img" aria-label="Illustration of a couple in yellow outfits at a haldi ceremony"></div><div class="evb"><h3>Haldi</h3><p>Haldi Ceremony</p><div class="wh">11 Dec · 10:00 AM<br>Golden Tulip, Hari Nagar</div><a href="https://www.google.com/maps/search/?api=1&query=Golden+Tulip+Hari+Nagar+Delhi" target="_blank" rel="noopener">Get directions ↗</a></div></div>
   <div class="ev rv"><div class="evh" style="background:#c08c7d;--img:url(assets/wedding.jpg)" role="img" aria-label="Illustration of a couple in a sherwani and lehenga wearing flower garlands"></div><div class="evb"><h3>The Wedding</h3><p>Promises for forever</p><div class="wh">11 Dec<br>Feathers by Kwatra, Rajouri Garden</div><a href="https://www.google.com/maps/search/?api=1&query=Feathers+by+Kwatra+Rajouri+Garden+Delhi" target="_blank" rel="noopener">Get directions ↗</a></div></div>
   <p class="rv" style="text-align:center;font-size:.85rem;color:var(--soft);margin:6px 0 0">Directions not opening? Open this invitation in Chrome or Safari.</p>
 </div></section>
@@ -178,6 +175,7 @@ footer h2{font-size:2.4rem}
   <div class="eye rv">Share the love</div>
   <h2 class="rv">Our wedding <em>hashtag</em></h2>
   <div class="card g rv" style="margin:0"><div class="tc" style="font-family:'Playfair Display',Georgia,serif;font-size:2.4rem;margin-bottom:10px">#आसान ishq</div><p>Share every twirl, tear and toast with our hashtag.</p></div>
+  <div class="card rv" style="margin:22px 0 0;text-align:center"><div style="color:var(--mauve);margin-bottom:14px"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg></div><div class="eye" style="margin-bottom:8px">Follow our wedding page</div><h3 style="font-size:2.1rem">@aasan_ishq</h3><p style="margin:12px 0 26px">Moments, reels and little surprises from our celebrations, all in one place.</p><a class="btn" style="padding:18px 28px;gap:12px;letter-spacing:.08em;font-size:.78rem;white-space:nowrap" href="https://www.instagram.com/aasan_ishq/" target="_blank" rel="noopener">Follow on Instagram <span>↗</span></a></div>
 </div></section>
 
 <section id="family"><div class="w">
@@ -186,16 +184,9 @@ footer h2{font-size:2.4rem}
   <div class="card rv"><div class="cap" style="margin:0 0 12px">Groom’s grandparents</div><h3 style="font-size:2rem">Mr. Radhey Shyam Madan<br>Mrs. Kanta Rani</h3></div>
   <div class="card rv"><div class="cap" style="margin:0 0 12px">Groom’s family</div><h3 style="font-size:2rem">Mr. Rajesh Madan<br>Mrs. Renuka Madan</h3><p>Parents of Anmol</p></div>
   <div class="card rv"><div class="cap" style="margin:0 0 12px">Groom’s brother</div><h3 style="font-size:2rem">Naman Madan</h3><p>Brother of Anmol</p></div>
-  <div class="card rv"><div class="cap" style="margin:0 0 12px">Bride’s grandparents</div><h3 style="font-size:2rem">Mr. Surinder Arora<br>Mrs. Chandraprakash Arora</h3></div>
-  <div class="card rv"><div class="cap" style="margin:0 0 12px">Bride’s family</div><h3 style="font-size:2rem">Mr. Rohit Arora<br>Mrs. Archna Arora</h3><p>Parents of Aastha</p></div>
+  <div class="card rv"><div class="cap" style="margin:0 0 12px">Bride’s grandparents</div><h3 style="font-size:2rem">Mr. Chander Prakash Arora<br>Mrs. Surinder Arora</h3></div>
+  <div class="card rv"><div class="cap" style="margin:0 0 12px">Bride’s family</div><h3 style="font-size:2rem">Mr. Rohit Arora<br>Mrs. Archana Arora</h3><p>Parents of Aastha</p></div>
   <div class="card rv"><div class="cap" style="margin:0 0 12px">Bride’s brother</div><h3 style="font-size:2rem">Swayam Arora</h3><p>Brother of Aastha</p></div>
-</div></section>
-
-<section id="faq" class="band"><div class="w faq">
-  <div class="eye rv">Good to know</div>
-  <h2 class="rv">Frequently asked <em>questions</em></h2>
-  <details class="rv"><summary>Are pets allowed at the venue?</summary><p>We adore our furry friends, but to keep every celebration comfortable for all our guests, pets are not allowed at the venues.</p></details>
-  <details class="rv"><summary>Is parking available at the venue?</summary><p>Yes, parking is available at all our venues. As Delhi evenings can get busy, we recommend carpooling and leaving a little early.</p></details>
 </div></section>
 
 <audio id="bgm" loop preload="auto" playsinline src="assets/song.mp3"></audio>
@@ -236,7 +227,7 @@ footer h2{font-size:2.4rem}
   function showSheet(n,t){document.getElementById('sn').textContent=n;var p=document.getElementById('sa');p.textContent=t;sh.className='on';
     document.getElementById('sc').onclick=function(){var b=this;copyTxt(t).then(function(ok){b.textContent=ok?'Copied ✓':'Press and hold the address to copy';setTimeout(function(){b.textContent='Copy address'},2500)})}}
   sh.addEventListener('click',function(e){if(e.target===sh||e.target.className==='x')sh.className=''});
-  Array.prototype.forEach.call(document.querySelectorAll('a[href^="http"]'),function(l){
+  Array.prototype.forEach.call(document.querySelectorAll('.evb a[href^="http"]'),function(l){
     l.addEventListener('click',function(e){e.preventDefault();var u=l.href,q=decodeURIComponent((u.split('query=')[1]||'').replace(/\+/g,' ')),n=l.parentNode.querySelector('h3').textContent;
       try{window.open(u,'_blank')}catch(x){}
       setTimeout(function(){if(document.visibilityState==='visible')showSheet(n,q)},900)})});
